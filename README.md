@@ -12,7 +12,7 @@
 
 <p align="center">
   <a href="https://github.com/jay-munjapara/UNdisEASE">
-    <img src="" alt="Logo">
+    <img src="/media/Team_Ctrl_Alt_Elite_Evathon_21.png" alt="Logo">
   </a>
 </p>
 
