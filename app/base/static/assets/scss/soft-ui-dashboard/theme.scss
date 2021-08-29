@@ -1,0 +1,38 @@
+// {{ site.product.name }} components
+// Variables
+@import "variables/navbar-vertical";
+@import "variables/social-buttons";
+@import "variables/rtl";
+@import "variables/breadcrumb";
+@import 'variables/fixed-plugin';
+@import 'variables/timeline';
+// Mixin
+@import "mixins/hover";
+@import "mixins/social-buttons";
+// Core Components - extra styling
+@import "alert";
+@import "avatars/avatar";
+@import "badge";
+@import "buttons";
+@import "breadcrumbs/breadcrumb";
+@import "cards";
+@import "dropdown";
+@import "dropup";
+@import "header";
+@import "forms/forms";
+@import "footer";
+@import "gradients";
+@import "info-areas";
+@import "misc";
+@import "navbar";
+@import "nav";
+@import "tables";
+@import "timeline";
+@import "typography";
+@import "utilities";
+@import "fixed-plugin";
+// Dashboard Free components
+@import "navbar";
+@import "navbar-vertical";
+@import "social-buttons";
+@import "rtl";
