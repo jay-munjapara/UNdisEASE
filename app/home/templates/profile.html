@@ -1,0 +1,122 @@
+{% extends 'layouts/base.html' %} {% block title %} Profile {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+
+<div class="container-fluid">
+    <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('/static/assets/img/curved-images/curved0.jpg'); background-position-y: 50%;">
+        <span class="mask bg-gradient-primary opacity-6"></span>
+    </div>
+    <div class="card card-body blur shadow-blur mx-4 mt-n6">
+        <div class="row gx-4">
+            <div class="col-auto">
+                <div class="avatar avatar-xl position-relative">
+                    <img src="/static/assets/img/profile-icon.png" alt="..." class="w-100 border-radius-lg shadow-sm">
+                    <a href="javascript:;" class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n2 me-n2">
+                        <i class="fa fa-pen top-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Image"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-auto my-auto">
+                <div class="h-100">
+                    <h5 class="mb-1">
+                        Erik Hemberg, Ph.D </h5>
+                    <p class="mb-0 font-weight-bold text-sm">
+                        Research Scientist | MIT Computer Science and Artificial Intelligence Lab </p>
+                </div>
+            </div>
+            <div class="col-sm-4 col-8 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+                <div class="nav-wrapper position-relative end-0">
+                    <!-- <ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link mb-0 px-0 py-1 active" data-bs-toggle="tab" href="javascript:;" role="tab" aria-controls="overview" aria-selected="true">
+                                <i class="fas fa-phone-alt-alt"></i>
+
+                                <span class="ms-1">Call</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="javascript:;" role="tab" aria-controls="teams" aria-selected="false">
+                                <i class="fas fa-comment-alt"></i>
+                                <span class="ms-1">Chat</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="javascript:;" role="tab" aria-controls="dashboard" aria-selected="false">
+                                <i class="fas fa-video"></i>
+                                <span class="ms-1">Video Call</span>
+                            </a>
+                        </li>
+                    </ul> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid py-4">
+
+    <div class="col-12 col-xl-12">
+        <div class="card mb-4">
+            <div class="card-header pb-0 p-3">
+                <div class="row">
+                    <div class="col-md-8 d-flex align-items-center">
+                        <h6 class="mb-0">About</h6>
+                    </div>
+                    <div class="col-md-4 text-right">
+                        <a href="javascript:;">
+                            <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-3">
+                <p class="text-sm">
+                    Erik Hemberg is a Research Scientist with ALFA Group at MIT-CSAIL. His work focuses on developing autonomous, proactive cyber defenses that are anticipatory and adapt to counter attacks. Novel methods for: cyber-hunting, automated methods of cyber-attack
+                    and defense scenarios in Software Defined and Peer-to-Peer Networks, models of networks and a proof-of-concept for how adversarial modeling can inform adaptive cyber security defenses and pro-actively design better network protocols.
+                    Additional work includes: automated semantic parsing of law, predicting stop-out in Massive Open Online Courses (MOOCs) and analyzing neuronal development of autism. Research sponsorships include: cybersecurity research with DARPA
+                    XD3, DARPA CHASE program, Lincoln Labs and CyberSecurity @CSAIL. Data science for MOOC with MIT-HKUST alliance. Erik also supervises Ph.Ds, SM, M.Eng students and UROPs.
+                </p>
+                <hr class="horizontal gray-light my-4">
+                <ul class="list-group">
+                    <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp; Erik Hemberg, Ph.D</li>
+                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; (44) 123 1234 123</li>
+                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; erik.hember@gmail.com</li>
+                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; UK</li>
+                    <li class="list-group-item border-0 ps-0 pb-0">
+                        <strong class="text-dark text-sm">Social:</strong> &nbsp;
+                        <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
+                            <i class="fab fa-facebook fa-lg"></i>
+                        </a>
+                        <a class="btn btn-twitter btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
+                            <i class="fab fa-twitter fa-lg"></i>
+                        </a>
+                        <a class="btn btn-instagram btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
+                            <i class="fab fa-instagram fa-lg"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include "includes/footer.html" %}
+
+</div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+
+<script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+        var options = {
+            damping: '0.5'
+        }
+        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+</script>
+
+{% endblock javascripts %}

@@ -1,0 +1,455 @@
+{% extends 'layouts/base.html' %} {% block title %} Dashboard {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        background-color: #f1f1f1;
+    }
+    
+    #regForm {
+        background-color: #ffffff;
+        margin: 10px auto;
+        font-family: Raleway;
+        padding: 40px;
+        width: 70%;
+        min-width: 300px;
+    }
+    
+    h1 {
+        text-align: center;
+    }
+    
+    input {
+        padding: 10px;
+        width: 100%;
+        font-size: 17px;
+        font-family: Raleway;
+        border: 1px solid #aaaaaa;
+        border-radius: 0.25rem;
+    }
+    /* Mark input boxes that gets an error on validation: */
+    
+    input.invalid {
+        background-color: #ffdddd;
+    }
+    /* Hide all steps by default: */
+    
+    .tab {
+        display: none;
+    }
+    
+    button {
+        /* background-color: #27A891; */
+        background-image: linear-gradient(310deg, #71F7AF, #27A891);
+        color: #ffffff;
+        border: none;
+        border-radius: 0.25rem;
+        padding: 10px 20px;
+        font-size: 17px;
+        font-family: Raleway;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        opacity: 0.8;
+    }
+    
+    #prevBtn {
+        background-color: #bbbbbb;
+    }
+    /* Make circles that indicate the steps of the form: */
+    
+    .step {
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbbbbb;
+        border: none;
+        border-radius: 50%;
+        display: inline-block;
+        opacity: 0.5;
+    }
+    
+    .step.active {
+        opacity: 1;
+    }
+    /* Mark the steps that are finished and valid: */
+    
+    .step.finish {
+        background-color: #71F7AF;
+    }
+</style>
+<style>
+    #disclaimer {
+        width: 100%;
+        padding: 50px 0;
+        text-align: center;
+        background-color: lightblue;
+        margin-top: 20px;
+        display: none;
+        z-index: 2;
+    }
+</style>
+<style>
+    * {
+        box-sizing: border-box
+    }
+    
+    body {
+        font-family: "Lato", sans-serif;
+    }
+    /* Style the tab */
+    
+    .tab {
+        float: left;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+        width: 30%;
+        height: 300px;
+    }
+    /* Style the buttons inside the tab */
+    
+    .tab button {
+        display: block;
+        background-color: inherit;
+        color: black;
+        padding: 22px 16px;
+        width: 100%;
+        border: none;
+        outline: none;
+        text-align: left;
+        cursor: pointer;
+        font-size: 17px;
+    }
+    /* Change background color of buttons on hover */
+    
+    .tab button:hover {
+        background-color: #ddd;
+    }
+    /* Create an active/current "tab button" class */
+    
+    .tab button.active {
+        background-color: #ccc;
+    }
+    /* Style the tab content */
+    
+    .tabcontent {
+        float: left;
+        padding: 0px 12px;
+        border: 1px solid #ccc;
+        width: 70%;
+        border: none;
+        height: 300px;
+        display: none;
+    }
+    /* Clear floats after the tab */
+    
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+</style>
+
+
+<div class="container-fluid py-4">
+    <div class="row mt-4">
+        <div class="card" style="height: 1200px;">
+            <div class="card-body p-3">
+                <h1 class="mb-4">Diagnosis</h1>
+                <p style="text-align: center;">Identify possible conditions and treatment related to your symptoms.</p>
+                <!-- disclaimer -->
+                <div class="disclaimer mb-3">
+                    <div class="additional info" style="text-align: center;"> This tool does not provide medical advice.
+                        <p onclick="myFunction()" style="text-align: center; cursor: pointer; color:#a471f7">See additional information <i class="fas fa-chevron-down"></i></p>
+                        <div id="disclaimer">
+                            This tool is not intended to be a substitute for professional medical advice, diagnosis, or treatment. Always read the label before taking any over-the-counter (OTC) medications. The label identifies the active ingredient(s) and contains other important
+                            information including warnings about possible drug interactions and side effects. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition. Never
+                            disregard professional medical advice or delay in seeking it because of something you have read on UNdisEASE! If you think you may have a medical emergency, call your doctor or 911 immediately. UNdisEASE does not recommend
+                            or endorse any specific products or services. Reliance on any information provided by UNdisEASE is solely at your own risk.
+                        </div>
+                        <script>
+                            function myFunction() {
+                                var x = document.getElementById("disclaimer");
+                                if (x.style.display === "block") {
+                                    x.style.display = "none";
+                                } else {
+                                    x.style.display = "block";
+                                }
+                            }
+                        </script>
+                    </div>
+
+                </div>
+                <br>
+                <h3>What are your symptoms?</h3>
+                <div class="symptom-checker mt-7 mb-5">
+                    <div class="ms-md-auto ps-md-3 d-flex align-items-center mt-3">
+                        <div class="bg-white border-radius-lg d-flex">
+                            <form action="{{url_for('home_blueprint.add')}}" method="post">
+                                <datalist id="suggestions">
+                                    {% for i in syptoms_lst %}
+                                    <option>{{ i }}</option>
+                                    {% endfor %}
+                                </datalist>
+                                <input placeholder="Add your symptoms" name="symptom" autocomplete="off" class="btn my-1 me-12" list="suggestions">
+                                <input type="submit" value="Add" class="btn bg-gradient-primary my-1 me-1">
+                            </form>
+                            <form action="{{url_for('home_blueprint.clear')}}" method="post">
+                                <input type="submit" value="Clear all" class="btn bg-gradient-primary my-1 me-1">
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="ms-md-auto ps-md-3 d-flex align-items-center mt-3 mb-5">
+                        {% if symptoms %} {% for i in symptoms %}
+                        <form action="{{url_for('home_blueprint.clear_symptome')}}" method="post">
+                            <input type="submit" name="value" value="{{i}}   X" class="btn bg-gradient-primary my-1 me-1">
+                        </form>&nbsp;&nbsp; {% endfor %} {% endif %}
+                    </div>
+                    <div class="ms-md-auto ps-md-3 d-flex align-items-center">
+                        <form action="{{url_for('home_blueprint.give_disease')}}" method="post">
+                            <input type="submit" value="Submit" class="btn bg-gradient-primary my-1 me-1">
+                        </form>
+                    </div>
+                </div>
+
+                <div class="result mt-7">
+                    <h3 class="mb-4">Conditions that match your symptoms</h3>
+
+                    {% if result %}{% if precaution %}{% if desc %}
+
+                    <div class="disease-tab mb-3">
+                        <button class="tablinks" onmouseover="openCity(event, '{{result[0][1]}}')" style="background-image: linear-gradient(310deg, #f77171 0%, #a82727 100%);">{{result[0][1]}}</button>
+                        <button class="tablinks" onmouseover="openCity(event, '{{result[0][3]}}')" style="background-image: linear-gradient(310deg, #daf771 0%, #81a827 100%);">{{result[0][3]}}</button>
+                        <button class=" tablinks " onmouseover="openCity(event, '{{result[0][5]}}') " style="background-image: linear-gradient(310deg, #81f771 0%, #2ba827 100%);">{{result[0][5]}}</button>
+                    </div>
+
+
+                    <div id="{{result[0][1]}}" class="tabcontent mt-3">
+                        <h3>{{result[0][1]}}</h3>
+                        <p>You may have this disease with accuracy of <b>{{result[0][0]*100}}%</b></p>
+                        <p><b>Description:</b> {{desc[0][1]}}</p>
+                        <p><b>Precaution(s):</b> {{precaution[0][1]}}, {{precaution[0][2]}}, {{precaution[0][3]}}, {{precaution[0][4]}}</p>
+                    </div>
+
+                    <div id="{{result[0][3]}}" class="tabcontent mt-3">
+                        <h3>{{result[0][3]}}</h3>
+                        <p>You may have this disease with accuracy of <b>{{result[0][2]*100}}%</b></p>
+                        <p><b>Description:</b> {{desc[1][1]}}</p>
+                        <p><b>Precaution(s):</b> {{precaution[1][1]}}, {{precaution[1][2]}}, {{precaution[1][3]}}, {{precaution[1][4]}}</p>
+                    </div>
+
+                    <div id="{{result[0][5]}}" class="tabcontent mt-3">
+                        <h3>{{result[0][5]}}</h3>
+                        <p>You may have this disease with accuracy of <b>{{result[0][4]*100}}%</b></p>
+                        <p><b>Description:</b> {{desc[2][1]}}</p>
+                        <p><b>Precaution(s):</b> {{precaution[2][1]}}, {{precaution[2][2]}}, {{precaution[2][3]}}, {{precaution[2][4]}}</p>
+                    </div>
+
+                    {% endif %}{% endif %}{% endif %}
+
+                    <div class="clearfix"></div>
+                    <script>
+                        function openCity(evt, cityName) {
+                            var i, tabcontent, tablinks;
+                            tabcontent = document.getElementsByClassName("tabcontent");
+                            for (i = 0; i < tabcontent.length; i++) {
+                                tabcontent[i].style.display = "none";
+                            }
+                            tablinks = document.getElementsByClassName("tablinks");
+                            for (i = 0; i < tablinks.length; i++) {
+                                tablinks[i].className = tablinks[i].className.replace(" active", "");
+                            }
+                            document.getElementById(cityName).style.display = "block";
+                            evt.currentTarget.className += " active";
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    {% include "includes/footer.html " %}
+
+</div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+
+<script src="/static/assets/js/plugins/chartjs.min.js "></script>
+<script src="/static/assets/js/plugins/Chart.extension.js "></script>
+<script>
+    var ctx = document.getElementById("chart-bars ").getContext("2d ");
+
+    new Chart(ctx, {
+        type: "bar ",
+        data: {
+            labels: ["Apr ", "May ", "Jun ", "Jul ", "Aug ", "Sep ", "Oct ", "Nov ", "Dec "],
+            datasets: [{
+                label: "Sales ",
+                tension: 0.4,
+                borderWidth: 0,
+                pointRadius: 0,
+                backgroundColor: "#fff ",
+                data: [450, 200, 100, 220, 500, 100, 400, 230, 500],
+                maxBarThickness: 6
+            }, ],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                display: false,
+            },
+            tooltips: {
+                enabled: true,
+                mode: "index ",
+                intersect: false,
+            },
+            scales: {
+                yAxes: [{
+                    gridLines: {
+                        display: false,
+                    },
+                    ticks: {
+                        suggestedMin: 0,
+                        suggestedMax: 500,
+                        beginAtZero: true,
+                        padding: 0,
+                        fontSize: 14,
+                        lineHeight: 3,
+                        fontColor: "#fff ",
+                        fontStyle: 'normal',
+                        fontFamily: "Open Sans ",
+                    },
+                }, ],
+                xAxes: [{
+                    gridLines: {
+                        display: false,
+                    },
+                    ticks: {
+                        display: false,
+                        padding: 20,
+                    },
+                }, ],
+            },
+        },
+    });
+
+    var ctx2 = document.getElementById("chart-line ").getContext("2d ");
+
+    var gradientStroke1 = ctx2.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke1.addColorStop(1, 'rgba(203,12,159,0.2)');
+    gradientStroke1.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+    gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
+
+    var gradientStroke2 = ctx2.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke2.addColorStop(1, 'rgba(20,23,39,0.2)');
+    gradientStroke2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+    gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
+
+
+    new Chart(ctx2, {
+        type: "line ",
+        data: {
+            labels: ["Apr ", "May ", "Jun ", "Jul ", "Aug ", "Sep ", "Oct ", "Nov ", "Dec "],
+            datasets: [{
+                label: "Mobile apps ",
+                tension: 0.4,
+                borderWidth: 0,
+                pointRadius: 0,
+                borderColor: "#27A891 ",
+                borderWidth: 3,
+                backgroundColor: gradientStroke1,
+                data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+                maxBarThickness: 6
+
+            }, {
+                label: "Websites ",
+                tension: 0.4,
+                borderWidth: 0,
+                pointRadius: 0,
+                borderColor: "#3A416F ",
+                borderWidth: 3,
+                backgroundColor: gradientStroke2,
+                data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
+                maxBarThickness: 6
+
+            }, ],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                display: false,
+            },
+            tooltips: {
+                enabled: true,
+                mode: "index ",
+                intersect: false,
+            },
+            scales: {
+                yAxes: [{
+                    gridLines: {
+                        borderDash: [2],
+                        borderDashOffset: [2],
+                        color: '#dee2e6',
+                        zeroLineColor: '#dee2e6',
+                        zeroLineWidth: 1,
+                        zeroLineBorderDash: [2],
+                        drawBorder: false,
+                    },
+                    ticks: {
+                        suggestedMin: 0,
+                        suggestedMax: 500,
+                        beginAtZero: true,
+                        padding: 10,
+                        fontSize: 11,
+                        fontColor: '#adb5bd',
+                        lineHeight: 3,
+                        fontStyle: 'normal',
+                        fontFamily: "Open Sans ",
+                    },
+                }, ],
+                xAxes: [{
+                    gridLines: {
+                        zeroLineColor: 'rgba(0,0,0,0)',
+                        display: false,
+                    },
+                    ticks: {
+                        padding: 10,
+                        fontSize: 11,
+                        fontColor: '#adb5bd',
+                        lineHeight: 3,
+                        fontStyle: 'normal',
+                        fontFamily: "Open Sans ",
+                    },
+                }, ],
+            },
+        },
+    });
+</script>
+<script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+        var options = {
+            damping: '0.5'
+        }
+        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+</script>
+
+{% endblock javascripts %}

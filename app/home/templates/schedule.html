@@ -1,0 +1,131 @@
+{% extends 'layouts/base.html' %} {% block title %} Profile {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+
+<div class="container-fluid">
+    <div class="page-header min-height-200 border-radius-xl mt-4" style="background-image: url('/static/assets/img/curved-images/curved0.jpg'); background-position-y: 50%;">
+        <span class="mask bg-gradient-primary opacity-6"></span>
+    </div>
+    <div class="card card-body blur shadow-blur mx-4 mt-n6">
+        <div class="row gx-4">
+            <div class="col-auto">
+                <div class="avatar avatar-xl position-relative">
+                    <img src="/static/assets/img/doctor-character.jpg" alt="..." class="w-100 border-radius-lg shadow-sm">
+                    <a href="javascript:;" class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n2 me-n2">
+                        <i class="fa fa-pen top-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Image"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-auto my-auto">
+                <div class="h-100">
+                    <h5 class="mb-1">
+                        WELCOME Dr. Yash </h5>
+                    <p class="mb-0 font-weight-bold text-sm">
+                        MBBS | Apollo Hospital </p>
+                </div>
+            </div>
+            <div class="col-sm-4 col-8 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+                <!-- <div class="nav-wrapper position-relative end-0">
+                    <ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link mb-0 px-0 py-1 active" data-bs-toggle="tab" href="javascript:;" role="tab" aria-controls="overview" aria-selected="true">
+                                <i class="fas fa-phone-alt-alt"></i>
+
+                                <span class="ms-1">Call</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="javascript:;" role="tab" aria-controls="teams" aria-selected="false">
+                                <i class="fas fa-comment-alt"></i>
+                                <span class="ms-1">Chat</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="javascript:;" role="tab" aria-controls="dashboard" aria-selected="false">
+                                <i class="fas fa-video"></i>
+                                <span class="ms-1">Video Call</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid py-4">
+    <!-- features -->
+
+
+    <div class="col-12 col-xl-12">
+        {% for item in items %}
+        <div class="row" style='padding-top: 10px;'>
+            <div class="col-lg-12">
+                <div class="card h-100">
+                    <div class="overflow-hidden position-relative border-radius-xl bg-cover h-100 p-4">
+                        <span class="mask bg-gradient-info"></span>
+                        <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3 col-lg-6">
+                            <h5 class="text-black font-weight-bolder mb-4 pt-2">Schedule</h3>
+                                <table>
+
+                                    <tr>
+                                        <td>PATIENT NAME : {{item[0]}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PATIENT P.NUMBER : {{item[1]}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>APPOINMENT FOR : {{item[2]}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>APPOINMENT DESC : {{item[3]}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>DATE : {{item[4]}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>TIME : {{item[5]}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>DURATION : {{item[6]}} </td>
+                                    </tr>
+
+                                </table>
+                                <br>
+                                <a class="text-black text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="{{url_for('base_blueprint.send_link')}}">
+                                        SEND LINK <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
+                                    </a>
+                                <a class="text-black text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="https://meet.google.com/xeu-oswr-foi" target="_blank">
+                                        JOIN GOOGLE MEET <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
+                                    </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+
+{% include "includes/footer.html" %}
+
+</div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+
+<script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+        var options = {
+            damping: '0.5'
+        }
+        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+</script>
+
+{% endblock javascripts %}

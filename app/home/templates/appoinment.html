@@ -1,0 +1,197 @@
+{% extends 'layouts/base.html' %} {% block title %} Dashboard {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+<link href="/app/base/static/assets/css/appoinment.css" rel="stylesheet" />
+<style>
+    body {
+        background-color: #5fcf80;
+    }
+    
+    #body_header {
+        width: auto;
+        margin: 0px auto;
+        text-align: center;
+        font-size: 25px;
+    }
+    
+    form {
+        max-width: 300px;
+        margin: 10px auto;
+        padding: 10px 20px;
+        background: #f4f7f8;
+        border-radius: 8px;
+    }
+    
+    h1 {
+        margin: 0 0 30px 0;
+        text-align: center;
+    }
+    
+    input[type="text"],
+    input[type="password"],
+    input[type="date"],
+    input[type="datetime"],
+    input[type="email"],
+    input[type="number"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="time"],
+    input[type="url"],
+    textarea,
+    select {
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        font-size: 16px;
+        height: auto;
+        margin: auto;
+        outline: 0;
+        padding: 8px;
+        width: 100%;
+        background-color: #e8eeef;
+        color: black;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+        margin-bottom: 30px;
+    }
+    
+    input[type="radio"],
+    input[type="checkbox"] {
+        margin: 0 4px 8px 0;
+    }
+    
+    select {
+        padding: 6px;
+        height: 32px;
+        border-radius: 2px;
+    }
+    
+    button {
+        padding: 19px 39px 18px 39px;
+        color: #FFF;
+        background-color: #4bc970;
+        font-size: 18px;
+        text-align: center;
+        font-style: normal;
+        border-radius: 5px;
+        width: 100%;
+        border: 1px solid #3ac162;
+        border-width: 1px 1px 3px;
+        box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+        margin-bottom: 10px;
+    }
+    
+    fieldset {
+        margin-bottom: 30px;
+        border: none;
+    }
+    
+    legend {
+        font-size: 1.4em;
+        margin-bottom: 10px;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 8px;
+    }
+    
+    label.light {
+        font-weight: 300;
+        display: inline;
+    }
+    
+    .number {
+        background-color: #5fcf80;
+        color: #fff;
+        height: 30px;
+        width: 30px;
+        display: inline-block;
+        font-size: 0.8em;
+        margin-right: 4px;
+        line-height: 30px;
+        text-align: center;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+        border-radius: 100%;
+    }
+    
+    form {
+        max-width: 680px;
+    }
+</style>
+
+<div class="container-fluid py-4" style="background-color:#5fcf80;">
+    <div id="container">
+        <!--This is a division tag for body container-->
+        <div id="body_header">
+            <!--This is a division tag for body header-->
+            <h1>Appointment Form</h1>
+            <p>Make your appointments more easier</p>
+
+        </div>
+        <form action="{{url_for('base_blueprint.add_appoinment')}}" method="post">
+            <fieldset>
+                <legend><span class="number">1</span>Your basic details</legend>
+                <label for="name">Name*:</label>
+                <input type="text" id="name" name="user_name" placeholder="Name" required pattern="[a-zA-Z0-9]+">
+
+                <label for="mail">Email*:</label>
+                <input type="email" id="mail" name="user_email" placeholder="abc@xyz.com" required>
+
+                <label for="tel">Contact No.:</label>
+                <input type="tel" id="tel" placeholder="90******87" name="user_num">
+
+                <label for="zoom_name">Zoom username:</label>
+                <input type="text" id="zoom_name" name="zoom_name" placeholder="xyz" pattern="[a-zA-Z0-9]+">
+
+
+            </fieldset>
+
+            <fieldset>
+                <legend><span class="number">2</span>Appointment Details</legend>
+                <label for="appointment_for">Appointment for*:</label>
+                <select id="appointment_for" name="appointment_for" required>
+                    <option value="General Meeting">General Meeting</option>
+                    <option value="Previous Visit">Previous Visit</option>
+                    <option value="New Visit">New Visit</option>
+                    <option value="Other">Other</option>
+                </select>
+                <label for="appointment_description">Appointment Description:</label>
+                <textarea id="appointment_description" name="appointment_description" placeholder="I wish to get an appointment to zoom for health issues."></textarea>
+                <label for="date">Date*:</label>
+                <input type="date" name="date" value="" required></input>
+                <br>
+                <label for="time">Time*:</label>
+                <input type="time" name="time" value="" required></input>
+                <br>
+                <label for="duration">How Long??(Minutes)</label>
+                <input type="radio" name="duration" value="15" checked> 15
+                <input type="radio" name="duration" value="30"> 30
+                <input type="radio" name="duration" value="60"> 60
+
+                <input type="radio" name="duration" value="more"> more
+            </fieldset>
+            <button type="submit">Request For Appointment</button>
+
+        </form>
+    </div>
+    {% include "includes/footer.html" %}
+
+</div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+<script type="text/javascript" src="https://github.com/rubyeffect/easy_fill/tree/master/lib/easy_fill-0.0.1.min.js"></script>
+
+<script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+        var options = {
+            damping: '0.5'
+        }
+        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+</script>
+
+{% endblock javascripts %}

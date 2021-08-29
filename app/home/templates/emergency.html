@@ -1,0 +1,325 @@
+{% extends 'layouts/base.html' %} {% block title %} Dashboard {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+
+<div class="container-fluid py-4">
+
+    <!-- Emergency -->
+    <!-- <div class="row mt-4" style="height: 700px;">
+        <div class="col-lg-12">
+            <div class="card h-100">
+                <div class="overflow-hidden position-relative border-radius-xl bg-cover h-100" style="background-image: url('/static/assets/img/ivancik.jpg');">
+                    <span class="mask bg-gradient-dark"></span>
+                    <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3 col-lg-6">
+                        <h5 class="text-white font-weight-bolder mb-4 pt-2">Emergency</h3>
+                            <p class="text-white">Don't be late to cure yourself. Hurry up!!</p>
+                            <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="javascript:;">
+                                Read More <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
+                            </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header pb-0">
+                    <h6>Near By Hospitals</h6>
+                </div>
+                <div class="card-body px-0 pt-0 pb-2">
+                    <div class="table-responsive p-0">
+                        <table class="table align-items-center justify-content-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hospitals</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Location</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Timings</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex px-2">
+
+                                            <div class="my-auto">
+                                                <h6 class="mb-0 text-sm">Apollo Hospitals</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="text-sm font-weight-bold mb-0">CBD Belapur, Mumbai</p>
+                                    </td>
+                                    <td>
+                                        <span class="text-xs font-weight-bold">Open</span>
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <span class="text-xs font-weight-bold">24X7</span
+                                    </td>
+                                    <td class="align-middle">
+                                        <button class="btn btn-link text-secondary mb-0">
+                        <i class="fa fa-phone-alt text-xs"></i>
+                      </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex px-2">
+                                            
+                                            <div class="my-auto">
+                                                <h6 class="mb-0 text-sm">Balaji Hospital</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="text-sm font-weight-bold mb-0">Kamothe, Mumbai</p>
+                                    </td>
+                                    <td>
+                                        <span class="text-xs font-weight-bold">Closed</span>
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <span class="text-xs font-weight-bold">Opens 8 am</span>
+                                    </td>
+                                    <td class="align-middle">
+                                        <button class="btn btn-link text-secondary mb-0" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-phone-alt text-xs"></i>
+                      </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex px-2">
+
+                                            <div class="my-auto">
+                                                <h6 class="mb-0 text-sm">Ozone Hospital</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="text-sm font-weight-bold mb-0">Kamothe, Mumbai</p>
+                                    </td>
+                                    <td>
+                                        <span class="text-xs font-weight-bold">Closed</span>
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <span class="me-2 text-xs font-weight-bold">Opens 8 am</span>
+                                    </td>
+                                    <td class="align-middle">
+                                        <button class="btn btn-link text-secondary mb-0" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-phone-alt text-xs"></i>
+                      </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex px-2">
+
+                                            <div class="my-auto">
+                                                <h6 class="mb-0 text-sm">Apex Multispeciality Hospital</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="text-sm font-weight-bold mb-0">Taloja, Mumbai</p>
+                                    </td>
+                                    <td>
+                                        <span class="text-xs font-weight-bold">Closed</span>
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <span class="me-2 text-xs font-weight-bold">Opens 7 am</span>
+                                    </td>
+                                    <td class="align-middle">
+                                        <button class="btn btn-link text-secondary mb-0" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-phone-alt text-xs"></i>
+                      </button>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    {% include "includes/footer.html" %}
+
+</div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+
+<script src="/static/assets/js/plugins/chartjs.min.js"></script>
+<script src="/static/assets/js/plugins/Chart.extension.js"></script>
+<script>
+    var ctx = document.getElementById("chart-bars").getContext("2d");
+
+    new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            datasets: [{
+                label: "Sales",
+                tension: 0.4,
+                borderWidth: 0,
+                pointRadius: 0,
+                backgroundColor: "#fff",
+                data: [450, 200, 100, 220, 500, 100, 400, 230, 500],
+                maxBarThickness: 6
+            }, ],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                display: false,
+            },
+            tooltips: {
+                enabled: true,
+                mode: "index",
+                intersect: false,
+            },
+            scales: {
+                yAxes: [{
+                    gridLines: {
+                        display: false,
+                    },
+                    ticks: {
+                        suggestedMin: 0,
+                        suggestedMax: 500,
+                        beginAtZero: true,
+                        padding: 0,
+                        fontSize: 14,
+                        lineHeight: 3,
+                        fontColor: "#fff",
+                        fontStyle: 'normal',
+                        fontFamily: "Open Sans",
+                    },
+                }, ],
+                xAxes: [{
+                    gridLines: {
+                        display: false,
+                    },
+                    ticks: {
+                        display: false,
+                        padding: 20,
+                    },
+                }, ],
+            },
+        },
+    });
+
+    var ctx2 = document.getElementById("chart-line").getContext("2d");
+
+    var gradientStroke1 = ctx2.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke1.addColorStop(1, 'rgba(203,12,159,0.2)');
+    gradientStroke1.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+    gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
+
+    var gradientStroke2 = ctx2.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke2.addColorStop(1, 'rgba(20,23,39,0.2)');
+    gradientStroke2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+    gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
+
+
+    new Chart(ctx2, {
+        type: "line",
+        data: {
+            labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            datasets: [{
+                label: "Mobile apps",
+                tension: 0.4,
+                borderWidth: 0,
+                pointRadius: 0,
+                borderColor: "#27A891",
+                borderWidth: 3,
+                backgroundColor: gradientStroke1,
+                data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+                maxBarThickness: 6
+
+            }, {
+                label: "Websites",
+                tension: 0.4,
+                borderWidth: 0,
+                pointRadius: 0,
+                borderColor: "#3A416F",
+                borderWidth: 3,
+                backgroundColor: gradientStroke2,
+                data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
+                maxBarThickness: 6
+
+            }, ],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                display: false,
+            },
+            tooltips: {
+                enabled: true,
+                mode: "index",
+                intersect: false,
+            },
+            scales: {
+                yAxes: [{
+                    gridLines: {
+                        borderDash: [2],
+                        borderDashOffset: [2],
+                        color: '#dee2e6',
+                        zeroLineColor: '#dee2e6',
+                        zeroLineWidth: 1,
+                        zeroLineBorderDash: [2],
+                        drawBorder: false,
+                    },
+                    ticks: {
+                        suggestedMin: 0,
+                        suggestedMax: 500,
+                        beginAtZero: true,
+                        padding: 10,
+                        fontSize: 11,
+                        fontColor: '#adb5bd',
+                        lineHeight: 3,
+                        fontStyle: 'normal',
+                        fontFamily: "Open Sans",
+                    },
+                }, ],
+                xAxes: [{
+                    gridLines: {
+                        zeroLineColor: 'rgba(0,0,0,0)',
+                        display: false,
+                    },
+                    ticks: {
+                        padding: 10,
+                        fontSize: 11,
+                        fontColor: '#adb5bd',
+                        lineHeight: 3,
+                        fontStyle: 'normal',
+                        fontFamily: "Open Sans",
+                    },
+                }, ],
+            },
+        },
+    });
+</script>
+<script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+        var options = {
+            damping: '0.5'
+        }
+        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+</script>
+
+{% endblock javascripts %}
